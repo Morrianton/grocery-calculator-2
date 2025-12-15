@@ -11,7 +11,7 @@ import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/grocery'),
+    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/grocery-calculator-2'),
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'changeme',
       signOptions: { expiresIn: '1h' },
