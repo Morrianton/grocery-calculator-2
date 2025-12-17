@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -11,9 +11,11 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  profile = signal<any>(null);
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {
+  profile = signal<unknown>(null);
+
+  constructor() {
     this.http.get(`${environment.apiUrl}/profile`).subscribe({ next: (p) => this.profile.set(p), error: () => this.profile.set(null) });
   }
 }

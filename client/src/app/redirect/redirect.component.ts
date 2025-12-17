@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -11,7 +11,9 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./redirect.component.scss']
 })
 export class RedirectComponent implements OnInit {
-  constructor(private auth: AuthService, private router: Router) {}
+  private auth = inject(AuthService);
+  private router = inject(Router);
+
 
   ngOnInit(): void {
     const token = this.auth.getToken();

@@ -1,3 +1,6 @@
 <h2>Profile</h2>
-<pre *ngIf="profile()">{{ profile() | json }}</pre>
-<div *ngIf="!profile()">No profile available or not authenticated.</div>
+@if  (profile() | json) {
+  <pre>{{ profile() }}</pre>
+} @else {
+  <p>No profile available or not authenticated.</p>
+}
